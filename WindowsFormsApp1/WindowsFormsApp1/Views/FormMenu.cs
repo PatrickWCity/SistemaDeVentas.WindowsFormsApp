@@ -16,5 +16,25 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vendedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -62,11 +62,11 @@
     <Compile Include="Views\FormCategoria.Designer.cs">
       <DependentUpon>FormCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FormCiente.cs">
+    <Compile Include="Views\FormCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FormCiente.Designer.cs">
-      <DependentUpon>FormCiente.cs</DependentUpon>
+    <Compile Include="Views\FormCliente.Designer.cs">
+      <DependentUpon>FormCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FormDetalleVenta.cs">
       <SubType>Form</SubType>
@@ -129,14 +129,17 @@
     <EmbeddedResource Include="Views\FormCategoria.resx">
       <DependentUpon>FormCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FormCiente.resx">
-      <DependentUpon>FormCiente.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FormCliente.resx">
+      <DependentUpon>FormCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormDetalleVenta.resx">
       <DependentUpon>FormDetalleVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormFactura.resx">
       <DependentUpon>FormFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormMenu.resx">
+      <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormModoPago.resx">
       <DependentUpon>FormModoPago.cs</DependentUpon>
