@@ -101,30 +101,35 @@
             this.modoDePagoToolStripMenuItem.Name = "modoDePagoToolStripMenuItem";
             this.modoDePagoToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.modoDePagoToolStripMenuItem.Text = "Modo de Pago";
+            this.modoDePagoToolStripMenuItem.Click += new System.EventHandler(this.modoDePagoToolStripMenuItem_Click);
             // 
             // ventaToolStripMenuItem
             // 
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
             this.ventaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.ventaToolStripMenuItem.Text = "Venta";
+            this.ventaToolStripMenuItem.Click += new System.EventHandler(this.ventaToolStripMenuItem_Click);
             // 
             // facturaToolStripMenuItem
             // 
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
             this.facturaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.facturaToolStripMenuItem.Text = "Factura";
+            this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
             // 
             // detalleDeVentaToolStripMenuItem
             // 
             this.detalleDeVentaToolStripMenuItem.Name = "detalleDeVentaToolStripMenuItem";
             this.detalleDeVentaToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.detalleDeVentaToolStripMenuItem.Text = "Detalle de Venta";
+            this.detalleDeVentaToolStripMenuItem.Click += new System.EventHandler(this.detalleDeVentaToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // FormMenu
             // 
@@ -137,6 +142,7 @@
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMenu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
