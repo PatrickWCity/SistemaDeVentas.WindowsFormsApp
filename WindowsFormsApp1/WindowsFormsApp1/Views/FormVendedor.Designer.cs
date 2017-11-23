@@ -33,13 +33,19 @@
             this.l_ZonaMensaje = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tb_Descripcion = new System.Windows.Forms.TextBox();
+            this.tb_ApellidoPaterno = new System.Windows.Forms.TextBox();
             this.tb_Nombre = new System.Windows.Forms.TextBox();
             this.tb_Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.B_Mostrar = new System.Windows.Forms.Button();
             this.B_Agregar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tb_Rut = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tb_Telefono = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_ApellidoMaterno = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,9 +96,9 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 19);
+            this.label3.Size = new System.Drawing.Size(146, 19);
             this.label3.TabIndex = 26;
-            this.label3.Text = "Descripcion";
+            this.label3.Text = "Apellido Paterno";
             // 
             // label2
             // 
@@ -104,24 +110,24 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "Nombre";
             // 
-            // tb_Descripcion
+            // tb_ApellidoPaterno
             // 
-            this.tb_Descripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_ApellidoPaterno.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_Descripcion.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Descripcion.Location = new System.Drawing.Point(149, 84);
-            this.tb_Descripcion.Name = "tb_Descripcion";
-            this.tb_Descripcion.Size = new System.Drawing.Size(374, 27);
-            this.tb_Descripcion.TabIndex = 24;
+            this.tb_ApellidoPaterno.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_ApellidoPaterno.Location = new System.Drawing.Point(167, 84);
+            this.tb_ApellidoPaterno.Name = "tb_ApellidoPaterno";
+            this.tb_ApellidoPaterno.Size = new System.Drawing.Size(356, 27);
+            this.tb_ApellidoPaterno.TabIndex = 24;
             // 
             // tb_Nombre
             // 
             this.tb_Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Nombre.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Nombre.Location = new System.Drawing.Point(149, 49);
+            this.tb_Nombre.Location = new System.Drawing.Point(167, 49);
             this.tb_Nombre.Name = "tb_Nombre";
-            this.tb_Nombre.Size = new System.Drawing.Size(374, 27);
+            this.tb_Nombre.Size = new System.Drawing.Size(356, 27);
             this.tb_Nombre.TabIndex = 23;
             // 
             // tb_Id
@@ -129,9 +135,9 @@
             this.tb_Id.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Id.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Id.Location = new System.Drawing.Point(149, 14);
+            this.tb_Id.Location = new System.Drawing.Point(167, 14);
             this.tb_Id.Name = "tb_Id";
-            this.tb_Id.Size = new System.Drawing.Size(374, 27);
+            this.tb_Id.Size = new System.Drawing.Size(356, 27);
             this.tb_Id.TabIndex = 22;
             // 
             // label1
@@ -191,17 +197,83 @@
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 191);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 19);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "RUT";
+            // 
+            // tb_Rut
+            // 
+            this.tb_Rut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_Rut.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Rut.Location = new System.Drawing.Point(167, 189);
+            this.tb_Rut.Name = "tb_Rut";
+            this.tb_Rut.Size = new System.Drawing.Size(356, 27);
+            this.tb_Rut.TabIndex = 44;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 157);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 19);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Telefono";
+            // 
+            // tb_Telefono
+            // 
+            this.tb_Telefono.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_Telefono.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Telefono.Location = new System.Drawing.Point(167, 154);
+            this.tb_Telefono.Name = "tb_Telefono";
+            this.tb_Telefono.Size = new System.Drawing.Size(356, 27);
+            this.tb_Telefono.TabIndex = 42;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 19);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "Apellido Materno";
+            // 
+            // tb_ApellidoMaterno
+            // 
+            this.tb_ApellidoMaterno.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_ApellidoMaterno.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_ApellidoMaterno.Location = new System.Drawing.Point(167, 119);
+            this.tb_ApellidoMaterno.Name = "tb_ApellidoMaterno";
+            this.tb_ApellidoMaterno.Size = new System.Drawing.Size(356, 27);
+            this.tb_ApellidoMaterno.TabIndex = 38;
+            // 
             // FormVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 425);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tb_Rut);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tb_Telefono);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tb_ApellidoMaterno);
             this.Controls.Add(this.B_Editar);
             this.Controls.Add(this.B_Eliminar);
             this.Controls.Add(this.l_ZonaMensaje);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_Descripcion);
+            this.Controls.Add(this.tb_ApellidoPaterno);
             this.Controls.Add(this.tb_Nombre);
             this.Controls.Add(this.tb_Id);
             this.Controls.Add(this.label1);
@@ -224,12 +296,18 @@
         private System.Windows.Forms.Label l_ZonaMensaje;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_Descripcion;
+        private System.Windows.Forms.TextBox tb_ApellidoPaterno;
         private System.Windows.Forms.TextBox tb_Nombre;
         private System.Windows.Forms.TextBox tb_Id;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button B_Mostrar;
         private System.Windows.Forms.Button B_Agregar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tb_Rut;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_Telefono;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tb_ApellidoMaterno;
     }
 }

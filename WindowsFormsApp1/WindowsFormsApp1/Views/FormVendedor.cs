@@ -14,27 +14,28 @@ namespace WindowsFormsApp1.Views
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
         }
-
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
             if (tb_Nombre.TextLength == 0)//cbcategoria and descripcion
             {
-                l_ZonaMensaje.Text = "Debe ingresar los datos del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar los datos del Vendedor a Agregar";
             }
             else if (tb_Nombre.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el nombre del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar el nombre del Vendedor a Agregar";
             }
             else
             {
                 string urlParametros = "?";
                 urlParametros += "nombre=" + tb_Nombre.Text;
-                urlParametros += "&descripcion=" + tb_Descripcion.Text;
-                urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
+                urlParametros += "&apPaterno=" + tb_ApellidoPaterno.Text;
+                urlParametros += "&apMaterno=" + tb_ApellidoMaterno.Text;
+                urlParametros += "&telefono=" + tb_Telefono.Text;
+                urlParametros += "&rut=" + tb_Rut.Text;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/AddProducto" + urlParametros))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/AddVendedor" + urlParametros))
                     {
                         using (HttpContent contenido = response.Content)
                         {
@@ -42,37 +43,40 @@ namespace WindowsFormsApp1.Views
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic dynamic = jsserialiser.DeserializeObject(respuestaserver);
 
-                            
+
                             foreach (var item in dynamic)
                             {
                                 l_ZonaMensaje.Text = item.Value;
                             }
                             tb_Id.Text = string.Empty;
                             tb_Nombre.Text = string.Empty;
-                            tb_Descripcion.Text = string.Empty;
+                            tb_ApellidoPaterno.Text = string.Empty;
+                            tb_ApellidoMaterno.Text = string.Empty;
+                            tb_Telefono.Text = string.Empty;
+                            tb_Rut.Text = string.Empty;
                         }
                     }
                 }//agregar
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/GetAll"))
                     {
                         using (HttpContent contenido = response.Content)
                         {
                             string respuestaserver = await contenido.ReadAsStringAsync();
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                            List<Producto> listaproductos = new List<Producto>();
+                            List<Vendedor> listaproductos = new List<Vendedor>();
                             foreach (var item in listaproductosdynamica)
                             {
-                                listaproductos.Add(new Producto
+                                listaproductos.Add(new Vendedor
                                 {
-                                    idProducto = item["idProducto"],
+                                    idVendedor = item["idVendedor"],
                                     nombre = item["nombre"],
-                                    descripcion = item["descripcion"],
-                                    precioUnitario = item["precioUnitario"],
-                                    url_imagen = item["url_imagen"],
-                                    idCategoria = item["idCategoria"]
+                                    apPaterno = item["apPaterno"],
+                                    apMaterno = item["apMaterno"],
+                                    telefono = item["telefono"],
+                                    rut = item["rut"]
                                 });
                             }
                             dataGridView1.DataSource = listaproductos;
@@ -85,31 +89,33 @@ namespace WindowsFormsApp1.Views
         {
             if (tb_Id.TextLength == 0 && tb_Nombre.TextLength == 0)//cbcategoria and descripcion
             {
-                l_ZonaMensaje.Text = "Debe ingresar los datos del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar los datos del Vendedor a Agregar";
             }
             else if (tb_Id.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar el ID del Vendedor a Eliminar";
             }
             else if (!int.TryParse(tb_Id.Text, out int id))
             {
-                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Vendedor a Eliminar";
             }
             else if (tb_Nombre.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el nombre del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar el nombre del Vendedor a Agregar";
             }
             else
             {
                 string urlParametros = "?";
-                urlParametros += "idProducto=" + tb_Id.Text;
+                urlParametros += "idVendedor=" + tb_Id.Text;
                 urlParametros += "&nombre=" + tb_Nombre.Text;
-                urlParametros += "&descripcion=" + tb_Descripcion.Text;
-                urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
+                urlParametros += "&apPaterno=" + tb_ApellidoPaterno.Text;
+                urlParametros += "&apMaterno=" + tb_ApellidoMaterno.Text;
+                urlParametros += "&telefono=" + tb_Telefono.Text;
+                urlParametros += "&rut=" + tb_Rut.Text;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/EditProducto" + urlParametros))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/EditVendedor" + urlParametros))
                     {
                         using (HttpContent contenido = response.Content)
                         {
@@ -124,30 +130,33 @@ namespace WindowsFormsApp1.Views
                             }
                             tb_Id.Text = string.Empty;
                             tb_Nombre.Text = string.Empty;
-                            tb_Descripcion.Text = string.Empty;
+                            tb_ApellidoPaterno.Text = string.Empty;
+                            tb_ApellidoMaterno.Text = string.Empty;
+                            tb_Telefono.Text = string.Empty;
+                            tb_Rut.Text = string.Empty;
                         }
                     }
                 }//agregar
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/GetAll"))
                     {
                         using (HttpContent contenido = response.Content)
                         {
                             string respuestaserver = await contenido.ReadAsStringAsync();
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                            List<Producto> listaproductos = new List<Producto>();
+                            List<Vendedor> listaproductos = new List<Vendedor>();
                             foreach (var item in listaproductosdynamica)
                             {
-                                listaproductos.Add(new Producto
+                                listaproductos.Add(new Vendedor
                                 {
-                                    idProducto = item["idProducto"],
+                                    idVendedor = item["idVendedor"],
                                     nombre = item["nombre"],
-                                    descripcion = item["descripcion"],
-                                    precioUnitario = item["precioUnitario"],
-                                    url_imagen = item["url_imagen"],
-                                    idCategoria = item["idCategoria"]
+                                    apPaterno = item["apPaterno"],
+                                    apMaterno = item["apMaterno"],
+                                    telefono = item["telefono"],
+                                    rut = item["rut"]
                                 });
                             }
                             dataGridView1.DataSource = listaproductos;
@@ -160,20 +169,20 @@ namespace WindowsFormsApp1.Views
         {
             if (tb_Id.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar el ID del Vendedor a Eliminar";
             }
             else if (!int.TryParse(tb_Id.Text, out int id))
             {
-                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Vendedor a Eliminar";
             }
             else
             {
                 string urlParametros = "?";
-                urlParametros += "idProducto=" + tb_Id.Text;
+                urlParametros += "idVendedor=" + tb_Id.Text;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/DeleteProducto" + urlParametros))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/DeleteVendedor" + urlParametros))
                     {
                         using (HttpContent contenido = response.Content)
                         {
@@ -188,30 +197,33 @@ namespace WindowsFormsApp1.Views
                             }
                             tb_Id.Text = string.Empty;
                             tb_Nombre.Text = string.Empty;
-                            tb_Descripcion.Text = string.Empty;
+                            tb_ApellidoPaterno.Text = string.Empty;
+                            tb_ApellidoMaterno.Text = string.Empty;
+                            tb_Telefono.Text = string.Empty;
+                            tb_Rut.Text = string.Empty;
                         }
                     }
                 }//agregar
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/GetAll"))
                     {
                         using (HttpContent contenido = response.Content)
                         {
                             string respuestaserver = await contenido.ReadAsStringAsync();
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                            List<Producto> listaproductos = new List<Producto>();
+                            List<Vendedor> listaproductos = new List<Vendedor>();
                             foreach (var item in listaproductosdynamica)
                             {
-                                listaproductos.Add(new Producto
+                                listaproductos.Add(new Vendedor
                                 {
-                                    idProducto = item["idProducto"],
+                                    idVendedor = item["idVendedor"],
                                     nombre = item["nombre"],
-                                    descripcion = item["descripcion"],
-                                    precioUnitario = item["precioUnitario"],
-                                    url_imagen = item["url_imagen"],
-                                    idCategoria = item["idCategoria"]
+                                    apPaterno = item["apPaterno"],
+                                    apMaterno = item["apMaterno"],
+                                    telefono = item["telefono"],
+                                    rut = item["rut"]
                                 });
                             }
                             dataGridView1.DataSource = listaproductos;
@@ -224,24 +236,24 @@ namespace WindowsFormsApp1.Views
         {
             using (HttpClient cliente = new HttpClient())
             {
-                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/GetAll"))
                 {
                     using (HttpContent contenido = response.Content)
                     {
                         string respuestaserver = await contenido.ReadAsStringAsync();
                         JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                         dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                        List<Producto> listaproductos = new List<Producto>();
+                        List<Vendedor> listaproductos = new List<Vendedor>();
                         foreach (var item in listaproductosdynamica)
                         {
-                            listaproductos.Add(new Producto
+                            listaproductos.Add(new Vendedor
                             {
-                                idProducto = item["idProducto"],
+                                idVendedor = item["idVendedor"],
                                 nombre = item["nombre"],
-                                descripcion = item["descripcion"],
-                                precioUnitario = item["precioUnitario"],
-                                url_imagen = item["url_imagen"],
-                                idCategoria = item["idCategoria"]
+                                apPaterno = item["apPaterno"],
+                                apMaterno = item["apMaterno"],
+                                telefono = item["telefono"],
+                                rut = item["rut"]
                             });
                         }
                         dataGridView1.DataSource = listaproductos;
@@ -257,8 +269,10 @@ namespace WindowsFormsApp1.Views
                 var row = dataGridView1.Rows[e.RowIndex];
                 tb_Id.Text = row.Cells[0].Value.ToString();
                 tb_Nombre.Text = row.Cells[1].Value.ToString();
-                tb_Descripcion.Text = (string)row.Cells[2].Value;// para nulls
-                //cb_IdCategoria.Text = row.Cells[5].Value.ToString(); ver
+                tb_ApellidoPaterno.Text = (string)row.Cells[2].Value;// para nulls
+                tb_ApellidoMaterno.Text = (string)row.Cells[3].Value;// para nulls
+                tb_Telefono.Text = (string)row.Cells[4].Value;// para nulls
+                tb_Rut.Text = (string)row.Cells[5].Value;// para nulls
             }
         }
     }
