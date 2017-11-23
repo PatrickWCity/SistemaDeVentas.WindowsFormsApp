@@ -161,6 +161,7 @@
             this.B_Mostrar.Text = "Mostrar";
             this.B_Mostrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.B_Mostrar.UseVisualStyleBackColor = true;
+            this.B_Mostrar.Click += new System.EventHandler(this.B_Mostrar_Click);
             this.B_Mostrar.MouseCaptureChanged += new System.EventHandler(this.B_Mostrar_Click);
             // 
             // B_Agregar
@@ -227,6 +228,7 @@
             // 
             // cb_ModoPago
             // 
+            this.cb_ModoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_ModoPago.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_ModoPago.FormattingEnabled = true;
             this.cb_ModoPago.Location = new System.Drawing.Point(149, 119);
@@ -257,7 +259,8 @@
             this.Controls.Add(this.dataGridView1);
             this.MinimumSize = new System.Drawing.Size(665, 463);
             this.Name = "FormFactura";
-            this.Text = "FormFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenedor de Facturas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

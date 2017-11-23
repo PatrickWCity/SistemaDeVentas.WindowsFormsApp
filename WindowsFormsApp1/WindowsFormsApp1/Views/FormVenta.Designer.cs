@@ -239,6 +239,7 @@
             // 
             // cb_Cliente
             // 
+            this.cb_Cliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Cliente.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Cliente.FormattingEnabled = true;
             this.cb_Cliente.Location = new System.Drawing.Point(149, 84);
@@ -248,6 +249,7 @@
             // 
             // cb_Vendedor
             // 
+            this.cb_Vendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Vendedor.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_Vendedor.FormattingEnabled = true;
             this.cb_Vendedor.Location = new System.Drawing.Point(149, 119);
@@ -280,7 +282,8 @@
             this.Controls.Add(this.dataGridView1);
             this.MinimumSize = new System.Drawing.Size(665, 463);
             this.Name = "FormVenta";
-            this.Text = "FormVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenedor de Ventas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

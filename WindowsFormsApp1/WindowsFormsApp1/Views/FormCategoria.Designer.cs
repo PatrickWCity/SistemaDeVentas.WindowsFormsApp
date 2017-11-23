@@ -210,7 +210,8 @@
             this.Controls.Add(this.DataGridView1);
             this.MinimumSize = new System.Drawing.Size(665, 464);
             this.Name = "FormCategoria";
-            this.Text = "Categorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenedor de Categorias";
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

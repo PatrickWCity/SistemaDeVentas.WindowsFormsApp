@@ -279,7 +279,7 @@
             this.B_Agregar.UseVisualStyleBackColor = true;
             this.B_Agregar.Click += new System.EventHandler(this.B_Agregar_Click);
             // 
-            // FormCiente
+            // FormCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -305,8 +305,9 @@
             this.Controls.Add(this.B_Agregar);
             this.Controls.Add(this.dataGridView1);
             this.MinimumSize = new System.Drawing.Size(665, 463);
-            this.Name = "FormCiente";
-            this.Text = "FormCiente";
+            this.Name = "FormCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenedor de Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

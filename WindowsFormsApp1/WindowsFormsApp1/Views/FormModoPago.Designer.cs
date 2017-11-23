@@ -176,9 +176,9 @@
             this.tb_Detalles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Detalles.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Detalles.Location = new System.Drawing.Point(149, 84);
+            this.tb_Detalles.Location = new System.Drawing.Point(162, 84);
             this.tb_Detalles.Name = "tb_Detalles";
-            this.tb_Detalles.Size = new System.Drawing.Size(374, 27);
+            this.tb_Detalles.Size = new System.Drawing.Size(361, 27);
             this.tb_Detalles.TabIndex = 27;
             // 
             // tb_Nombre
@@ -186,9 +186,9 @@
             this.tb_Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Nombre.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Nombre.Location = new System.Drawing.Point(149, 49);
+            this.tb_Nombre.Location = new System.Drawing.Point(162, 49);
             this.tb_Nombre.Name = "tb_Nombre";
-            this.tb_Nombre.Size = new System.Drawing.Size(374, 27);
+            this.tb_Nombre.Size = new System.Drawing.Size(361, 27);
             this.tb_Nombre.TabIndex = 26;
             // 
             // FormModoPago
@@ -210,7 +210,8 @@
             this.Controls.Add(this.dataGridView1);
             this.MinimumSize = new System.Drawing.Size(665, 463);
             this.Name = "FormModoPago";
-            this.Text = "FormModoPago";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenedor de Modos de Pago";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

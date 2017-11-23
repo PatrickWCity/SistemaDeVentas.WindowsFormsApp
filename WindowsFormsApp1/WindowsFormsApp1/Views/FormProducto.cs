@@ -45,7 +45,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&descripcion=" + tb_Descripcion.Text; 
                 urlParametros += "&precioUnitario=" + tb_PrecioUnitario.Text;
                 urlParametros += "&url_imagen=" + tb_URLImagen.Text;
-                urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
+                urlParametros += "&idCategoria=" + cb_IdCategoria.SelectedValue;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
@@ -67,6 +67,7 @@ namespace WindowsFormsApp1.Views
                             tb_Descripcion.Text = string.Empty;
                             tb_PrecioUnitario.Text = string.Empty;
                             tb_URLImagen.Text = string.Empty;
+                            cb_IdCategoria.SelectedValue = 0;
                         }
                     }
                 }//agregar
@@ -136,7 +137,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&descripcion=" + tb_Descripcion.Text;
                 urlParametros += "&precioUnitario=" + tb_PrecioUnitario.Text;
                 urlParametros += "&url_imagen=" + tb_URLImagen.Text;
-                urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
+                urlParametros += "&idCategoria=" + cb_IdCategoria.SelectedValue;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
@@ -158,6 +159,7 @@ namespace WindowsFormsApp1.Views
                             tb_Descripcion.Text = string.Empty;
                             tb_PrecioUnitario.Text = string.Empty;
                             tb_URLImagen.Text = string.Empty;
+                            cb_IdCategoria.SelectedValue = 0;
                         }
                     }
                 }//agregar
@@ -224,6 +226,7 @@ namespace WindowsFormsApp1.Views
                             tb_Descripcion.Text = string.Empty;
                             tb_PrecioUnitario.Text = string.Empty;
                             tb_URLImagen.Text = string.Empty;
+                            cb_IdCategoria.SelectedValue = 0;
                         }
                     }
                 }//agregar

@@ -33,13 +33,19 @@
             this.l_ZonaMensaje = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tb_Descripcion = new System.Windows.Forms.TextBox();
-            this.tb_Nombre = new System.Windows.Forms.TextBox();
             this.tb_Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.B_Mostrar = new System.Windows.Forms.Button();
             this.B_Agregar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_Cantidad = new System.Windows.Forms.TextBox();
+            this.tb_SubTotal = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cb_Factura = new System.Windows.Forms.ComboBox();
+            this.cb_Venta = new System.Windows.Forms.ComboBox();
+            this.cb_Producto = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,9 +96,9 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 19);
+            this.label3.Size = new System.Drawing.Size(57, 19);
             this.label3.TabIndex = 26;
-            this.label3.Text = "Descripcion";
+            this.label3.Text = "Venta";
             // 
             // label2
             // 
@@ -100,29 +106,9 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 19);
+            this.label2.Size = new System.Drawing.Size(70, 19);
             this.label2.TabIndex = 25;
-            this.label2.Text = "Nombre";
-            // 
-            // tb_Descripcion
-            // 
-            this.tb_Descripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_Descripcion.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Descripcion.Location = new System.Drawing.Point(149, 84);
-            this.tb_Descripcion.Name = "tb_Descripcion";
-            this.tb_Descripcion.Size = new System.Drawing.Size(374, 27);
-            this.tb_Descripcion.TabIndex = 24;
-            // 
-            // tb_Nombre
-            // 
-            this.tb_Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_Nombre.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Nombre.Location = new System.Drawing.Point(149, 49);
-            this.tb_Nombre.Name = "tb_Nombre";
-            this.tb_Nombre.Size = new System.Drawing.Size(374, 27);
-            this.tb_Nombre.TabIndex = 23;
+            this.label2.Text = "Factura";
             // 
             // tb_Id
             // 
@@ -191,18 +177,104 @@
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 19);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Cantidad";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 157);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 19);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Producto";
+            // 
+            // tb_Cantidad
+            // 
+            this.tb_Cantidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_Cantidad.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Cantidad.Location = new System.Drawing.Point(149, 189);
+            this.tb_Cantidad.Name = "tb_Cantidad";
+            this.tb_Cantidad.Size = new System.Drawing.Size(374, 27);
+            this.tb_Cantidad.TabIndex = 33;
+            // 
+            // tb_SubTotal
+            // 
+            this.tb_SubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_SubTotal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_SubTotal.Location = new System.Drawing.Point(149, 119);
+            this.tb_SubTotal.Name = "tb_SubTotal";
+            this.tb_SubTotal.Size = new System.Drawing.Size(374, 27);
+            this.tb_SubTotal.TabIndex = 31;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 122);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 19);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Subtotal";
+            // 
+            // cb_Factura
+            // 
+            this.cb_Factura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Factura.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Factura.FormattingEnabled = true;
+            this.cb_Factura.Location = new System.Drawing.Point(149, 49);
+            this.cb_Factura.Name = "cb_Factura";
+            this.cb_Factura.Size = new System.Drawing.Size(374, 27);
+            this.cb_Factura.TabIndex = 36;
+            // 
+            // cb_Venta
+            // 
+            this.cb_Venta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Venta.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Venta.FormattingEnabled = true;
+            this.cb_Venta.Location = new System.Drawing.Point(149, 84);
+            this.cb_Venta.Name = "cb_Venta";
+            this.cb_Venta.Size = new System.Drawing.Size(374, 27);
+            this.cb_Venta.TabIndex = 37;
+            // 
+            // cb_Producto
+            // 
+            this.cb_Producto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Producto.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Producto.FormattingEnabled = true;
+            this.cb_Producto.Location = new System.Drawing.Point(149, 154);
+            this.cb_Producto.Name = "cb_Producto";
+            this.cb_Producto.Size = new System.Drawing.Size(374, 27);
+            this.cb_Producto.TabIndex = 38;
+            // 
             // FormDetalleVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 425);
+            this.Controls.Add(this.cb_Producto);
+            this.Controls.Add(this.cb_Venta);
+            this.Controls.Add(this.cb_Factura);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.tb_Cantidad);
+            this.Controls.Add(this.tb_SubTotal);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.B_Editar);
             this.Controls.Add(this.B_Eliminar);
             this.Controls.Add(this.l_ZonaMensaje);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_Descripcion);
-            this.Controls.Add(this.tb_Nombre);
             this.Controls.Add(this.tb_Id);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.B_Mostrar);
@@ -210,7 +282,8 @@
             this.Controls.Add(this.dataGridView1);
             this.MinimumSize = new System.Drawing.Size(665, 463);
             this.Name = "FormDetalleVenta";
-            this.Text = "FormDetalleVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Mantenedor de Detalles de Venta";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -224,12 +297,18 @@
         private System.Windows.Forms.Label l_ZonaMensaje;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_Descripcion;
-        private System.Windows.Forms.TextBox tb_Nombre;
         private System.Windows.Forms.TextBox tb_Id;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button B_Mostrar;
         private System.Windows.Forms.Button B_Agregar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tb_Cantidad;
+        private System.Windows.Forms.TextBox tb_SubTotal;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cb_Factura;
+        private System.Windows.Forms.ComboBox cb_Venta;
+        private System.Windows.Forms.ComboBox cb_Producto;
     }
 }
