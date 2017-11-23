@@ -307,7 +307,7 @@ namespace WindowsFormsApp1.Views
                             listaproductos.Add(new Cliente
                             {
                                 idCliente = item["idCliente"],
-                                nombre = item["nombre"]//+" "+item["apPaterno"]+" "+item["ApMaterno"] 
+                                nombre = item["nombre"]+" "+item["apPaterno"]
                             });
                         }
                         cb_Cliente.DataSource = listaproductos;
@@ -340,7 +340,7 @@ namespace WindowsFormsApp1.Views
                             listaproductos.Add(new Vendedor
                             {
                                 idVendedor = item["idVendedor"],
-                                nombre = item["nombre"] //+ " " + item["apPaterno"] + " " + item["ApMaterno"]
+                                nombre = item["nombre"] + " " + item["apPaterno"]
                             });
                         }
                         cb_Vendedor.DataSource = listaproductos;
