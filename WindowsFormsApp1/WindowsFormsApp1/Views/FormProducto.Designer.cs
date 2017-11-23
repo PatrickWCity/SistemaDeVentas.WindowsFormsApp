@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.B_Agregar = new System.Windows.Forms.Button();
             this.B_Mostrar = new System.Windows.Forms.Button();
@@ -47,9 +46,7 @@
             this.l_ZonaMensaje = new System.Windows.Forms.Label();
             this.B_Eliminar = new System.Windows.Forms.Button();
             this.B_Editar = new System.Windows.Forms.Button();
-            this.bindingSourceCategoria = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -289,7 +286,6 @@
             this.Name = "FormProducto";
             this.Text = "Productos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,6 +311,5 @@
         private System.Windows.Forms.Label l_ZonaMensaje;
         private System.Windows.Forms.Button B_Eliminar;
         private System.Windows.Forms.Button B_Editar;
-        private System.Windows.Forms.BindingSource bindingSourceCategoria;
     }
 }

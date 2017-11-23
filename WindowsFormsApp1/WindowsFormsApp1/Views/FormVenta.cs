@@ -9,32 +9,38 @@ namespace WindowsFormsApp1.Views
 {
     public partial class FormVenta : Form
     {
+        int cli, ven;
         public FormVenta()
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            Cliente();
+            Vendedor();
         }
 
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
-            if (tb_Nombre.TextLength == 0)//cbcategoria and descripcion
+            if (tb_Total.TextLength == 0)//cbcategoria and descripcion
             {
-                l_ZonaMensaje.Text = "Debe ingresar los datos del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar los datos del Venta a Agregar";
             }
-            else if (tb_Nombre.TextLength == 0)
+            else if (tb_Total.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el nombre del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar el nombre del Venta a Agregar";
             }
             else
             {
                 string urlParametros = "?";
-                urlParametros += "nombre=" + tb_Nombre.Text;
-                urlParametros += "&descripcion=" + tb_Descripcion.Text;
-                urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
+                urlParametros += "total=" + tb_Total.Text;
+                urlParametros += "&idCliente=" + cb_Cliente.SelectedValue;
+                urlParametros += "&idVendedor=" + cb_Vendedor.SelectedValue;
+                urlParametros += "&fecha=" + DateTime.Now;
+                urlParametros += "&descuento=" + tb_Descuento.Text;
+                urlParametros += "&IVA=" + tb_IVA.Text;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/AddProducto" + urlParametros))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/AddVenta" + urlParametros))
                     {
                         using (HttpContent contenido = response.Content)
                         {
@@ -48,31 +54,35 @@ namespace WindowsFormsApp1.Views
                                 l_ZonaMensaje.Text = item.Value;
                             }
                             tb_Id.Text = string.Empty;
-                            tb_Nombre.Text = string.Empty;
-                            tb_Descripcion.Text = string.Empty;
+                            tb_Total.Text = string.Empty;
+                            tb_Descuento.Text = string.Empty;
+                            tb_IVA.Text = string.Empty;
+                            cb_Cliente.SelectedValue = 0;
+                            cb_Vendedor.SelectedValue = 0;
                         }
                     }
                 }//agregar
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/GetAll"))
                     {
                         using (HttpContent contenido = response.Content)
                         {
                             string respuestaserver = await contenido.ReadAsStringAsync();
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                            List<Producto> listaproductos = new List<Producto>();
+                            List<Venta> listaproductos = new List<Venta>();
                             foreach (var item in listaproductosdynamica)
                             {
-                                listaproductos.Add(new Producto
+                                listaproductos.Add(new Venta
                                 {
-                                    idProducto = item["idProducto"],
-                                    nombre = item["nombre"],
-                                    descripcion = item["descripcion"],
-                                    precioUnitario = item["precioUnitario"],
-                                    url_imagen = item["url_imagen"],
-                                    idCategoria = item["idCategoria"]
+                                    idVenta = item["idVenta"],
+                                    total = item["total"],
+                                    idCliente = item["idCliente"],
+                                    idVendedor = item["idVendedor"],
+                                    fecha = item["fecha"],
+                                    descuento = item["descuento"],
+                                    IVA = item["IVA"]
                                 });
                             }
                             dataGridView1.DataSource = listaproductos;
@@ -83,33 +93,36 @@ namespace WindowsFormsApp1.Views
         }
         private async void B_Editar_Click(object sender, EventArgs e)
         {
-            if (tb_Id.TextLength == 0 && tb_Nombre.TextLength == 0)//cbcategoria and descripcion
+            if (tb_Id.TextLength == 0 && tb_Total.TextLength == 0)//cbcategoria and descripcion
             {
-                l_ZonaMensaje.Text = "Debe ingresar los datos del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar los datos del Venta a Agregar";
             }
             else if (tb_Id.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar el ID del Venta a Eliminar";
             }
             else if (!int.TryParse(tb_Id.Text, out int id))
             {
-                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Venta a Eliminar";
             }
-            else if (tb_Nombre.TextLength == 0)
+            else if (tb_Total.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el nombre del Producto a Agregar";
+                l_ZonaMensaje.Text = "Debe ingresar el nombre del Venta a Agregar";
             }
             else
             {
                 string urlParametros = "?";
-                urlParametros += "idProducto=" + tb_Id.Text;
-                urlParametros += "&nombre=" + tb_Nombre.Text;
-                urlParametros += "&descripcion=" + tb_Descripcion.Text;
-                urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
+                urlParametros += "idVenta=" + tb_Id.Text;
+                urlParametros += "&total=" + tb_Total.Text;
+                urlParametros += "&idCliente=" + cb_Cliente.SelectedValue;
+                urlParametros += "&idVendedor=" + cb_Vendedor.SelectedValue;
+                urlParametros += "&fecha=" + DateTime.Now;
+                urlParametros += "&descuento=" + tb_Descuento.Text;
+                urlParametros += "&IVA=" + tb_IVA.Text;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/EditProducto" + urlParametros))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/EditVenta" + urlParametros))
                     {
                         using (HttpContent contenido = response.Content)
                         {
@@ -123,31 +136,35 @@ namespace WindowsFormsApp1.Views
                                 l_ZonaMensaje.Text = item.Value;
                             }
                             tb_Id.Text = string.Empty;
-                            tb_Nombre.Text = string.Empty;
-                            tb_Descripcion.Text = string.Empty;
+                            tb_Total.Text = string.Empty;
+                            tb_Descuento.Text = string.Empty;
+                            tb_IVA.Text = string.Empty;
+                            cb_Cliente.SelectedItem = 0;
+                            cb_Vendedor.SelectedItem = 0;
                         }
                     }
                 }//agregar
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/GetAll"))
                     {
                         using (HttpContent contenido = response.Content)
                         {
                             string respuestaserver = await contenido.ReadAsStringAsync();
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                            List<Producto> listaproductos = new List<Producto>();
+                            List<Venta> listaproductos = new List<Venta>();
                             foreach (var item in listaproductosdynamica)
                             {
-                                listaproductos.Add(new Producto
+                                listaproductos.Add(new Venta
                                 {
-                                    idProducto = item["idProducto"],
-                                    nombre = item["nombre"],
-                                    descripcion = item["descripcion"],
-                                    precioUnitario = item["precioUnitario"],
-                                    url_imagen = item["url_imagen"],
-                                    idCategoria = item["idCategoria"]
+                                    idVenta = item["idVenta"],
+                                    total = item["total"],
+                                    idCliente = item["idCliente"],
+                                    idVendedor = item["idVendedor"],
+                                    fecha = item["fecha"],
+                                    descuento = item["descuento"],
+                                    IVA = item["IVA"]
                                 });
                             }
                             dataGridView1.DataSource = listaproductos;
@@ -160,20 +177,20 @@ namespace WindowsFormsApp1.Views
         {
             if (tb_Id.TextLength == 0)
             {
-                l_ZonaMensaje.Text = "Debe ingresar el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar el ID del Venta a Eliminar";
             }
             else if (!int.TryParse(tb_Id.Text, out int id))
             {
-                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Producto a Eliminar";
+                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el ID del Venta a Eliminar";
             }
             else
             {
                 string urlParametros = "?";
-                urlParametros += "idProducto=" + tb_Id.Text;
+                urlParametros += "idVenta=" + tb_Id.Text;
                 //url lista
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/DeleteProducto" + urlParametros))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/DeleteVenta" + urlParametros))
                     {
                         using (HttpContent contenido = response.Content)
                         {
@@ -187,31 +204,35 @@ namespace WindowsFormsApp1.Views
                                 l_ZonaMensaje.Text = item.Value;
                             }
                             tb_Id.Text = string.Empty;
-                            tb_Nombre.Text = string.Empty;
-                            tb_Descripcion.Text = string.Empty;
+                            tb_Total.Text = string.Empty;
+                            tb_Descuento.Text = string.Empty;
+                            tb_IVA.Text = string.Empty;
+                            cb_Cliente.SelectedValue = 0;
+                            cb_Vendedor.SelectedValue = 0;
                         }
                     }
                 }//agregar
                 using (HttpClient cliente = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                    using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/GetAll"))
                     {
                         using (HttpContent contenido = response.Content)
                         {
                             string respuestaserver = await contenido.ReadAsStringAsync();
                             JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                             dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                            List<Producto> listaproductos = new List<Producto>();
+                            List<Venta> listaproductos = new List<Venta>();
                             foreach (var item in listaproductosdynamica)
                             {
-                                listaproductos.Add(new Producto
+                                listaproductos.Add(new Venta
                                 {
-                                    idProducto = item["idProducto"],
-                                    nombre = item["nombre"],
-                                    descripcion = item["descripcion"],
-                                    precioUnitario = item["precioUnitario"],
-                                    url_imagen = item["url_imagen"],
-                                    idCategoria = item["idCategoria"]
+                                    idVenta = item["idVenta"],
+                                    total = item["total"],
+                                    idCliente = item["idCliente"],
+                                    idVendedor = item["idVendedor"],
+                                    fecha = item["fecha"],
+                                    descuento = item["descuento"],
+                                    IVA = item["IVA"]
                                 });
                             }
                             dataGridView1.DataSource = listaproductos;
@@ -224,24 +245,25 @@ namespace WindowsFormsApp1.Views
         {
             using (HttpClient cliente = new HttpClient())
             {
-                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
+                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/GetAll"))
                 {
                     using (HttpContent contenido = response.Content)
                     {
                         string respuestaserver = await contenido.ReadAsStringAsync();
                         JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
                         dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
-                        List<Producto> listaproductos = new List<Producto>();
+                        List<Venta> listaproductos = new List<Venta>();
                         foreach (var item in listaproductosdynamica)
                         {
-                            listaproductos.Add(new Producto
+                            listaproductos.Add(new Venta
                             {
-                                idProducto = item["idProducto"],
-                                nombre = item["nombre"],
-                                descripcion = item["descripcion"],
-                                precioUnitario = item["precioUnitario"],
-                                url_imagen = item["url_imagen"],
-                                idCategoria = item["idCategoria"]
+                                idVenta = item["idVenta"],
+                                total = item["total"],
+                                idCliente = item["idCliente"],
+                                idVendedor = item["idVendedor"],
+                                fecha = item["fecha"],
+                                descuento = item["descuento"],
+                                IVA = item["IVA"]
                             });
                         }
                         dataGridView1.DataSource = listaproductos;
@@ -256,9 +278,77 @@ namespace WindowsFormsApp1.Views
             {
                 var row = dataGridView1.Rows[e.RowIndex];
                 tb_Id.Text = row.Cells[0].Value.ToString();
-                tb_Nombre.Text = row.Cells[1].Value.ToString();
-                tb_Descripcion.Text = (string)row.Cells[2].Value;// para nulls
-                //cb_IdCategoria.Text = row.Cells[5].Value.ToString(); ver
+                tb_Total.Text = row.Cells[1].Value.ToString();
+                cb_Cliente.SelectedValue = row.Cells[2].Value;
+                cb_Vendedor.SelectedValue = row.Cells[3].Value;
+                tb_Descuento.Text = row.Cells[4].Value.ToString();
+                tb_IVA.Text = row.Cells[5].Value.ToString();
+            }
+        }
+        private async void Cliente()
+        {
+            using (HttpClient cliente = new HttpClient())
+            {
+                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Cliente/GetAll"))
+                {
+                    using (HttpContent contenido = response.Content)
+                    {
+                        string respuestaserver = await contenido.ReadAsStringAsync();
+                        JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
+                        dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
+                        List<Cliente> listaproductos = new List<Cliente>();
+                        listaproductos.Add(new Cliente
+                        {
+                            idCliente = 0,
+                            nombre = "Selecionar Cliente"
+                        });
+                        foreach (var item in listaproductosdynamica)
+                        {
+                            listaproductos.Add(new Cliente
+                            {
+                                idCliente = item["idCliente"],
+                                nombre = item["nombre"]//+" "+item["apPaterno"]+" "+item["ApMaterno"] 
+                            });
+                        }
+                        cb_Cliente.DataSource = listaproductos;
+                        cb_Cliente.DisplayMember = "nombre";
+                        cb_Cliente.ValueMember = "idCliente";
+                        cli = (int)cb_Cliente.SelectedValue;
+                    }
+                }
+            }
+        }
+        private async void Vendedor()
+        {
+            using (HttpClient cliente = new HttpClient())
+            {
+                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/GetAll"))
+                {
+                    using (HttpContent contenido = response.Content)
+                    {
+                        string respuestaserver = await contenido.ReadAsStringAsync();
+                        JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
+                        dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
+                        List<Vendedor> listaproductos = new List<Vendedor>();
+                        listaproductos.Add(new Vendedor
+                        {
+                            idVendedor = 0,
+                            nombre = "Selecionar Vendedor"
+                        });
+                        foreach (var item in listaproductosdynamica)
+                        {
+                            listaproductos.Add(new Vendedor
+                            {
+                                idVendedor = item["idVendedor"],
+                                nombre = item["nombre"] //+ " " + item["apPaterno"] + " " + item["ApMaterno"]
+                            });
+                        }
+                        cb_Vendedor.DataSource = listaproductos;
+                        cb_Vendedor.DisplayMember = "nombre";
+                        cb_Vendedor.ValueMember = "idVendedor";
+                        ven = (int)cb_Vendedor.SelectedValue;
+                    }
+                }
             }
         }
     }
