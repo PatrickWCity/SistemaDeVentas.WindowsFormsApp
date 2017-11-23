@@ -96,7 +96,7 @@ namespace WindowsFormsApp1.Views
             else
             {
                 string urlParametros = "?";
-                urlParametros += "idModoPago=" + tb_Id.Text;
+                urlParametros += "numPagoo=" + tb_Id.Text;
                 urlParametros += "&nombre=" + tb_Nombre.Text;
                 urlParametros += "&otroDetalles=" + tb_Detalles.Text;//detalles
                 //url lista
