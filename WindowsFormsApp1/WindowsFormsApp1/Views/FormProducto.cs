@@ -9,10 +9,12 @@ namespace WindowsFormsApp1.Views
 {
     public partial class FormProducto : Form
     {
+        int cat;
         public FormProducto()
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            Categoria();
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
@@ -294,6 +296,39 @@ namespace WindowsFormsApp1.Views
                 tb_PrecioUnitario.Text = row.Cells[3].Value.ToString();
                 tb_URLImagen.Text = row.Cells[4].Value.ToString();
                 //cb_IdCategoria.Text = row.Cells[5].Value.ToString(); ver
+            }
+        }
+        private async void Categoria()
+        {
+            using (HttpClient cliente = new HttpClient())
+            {
+                using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Categoria/GetAll"))
+                {
+                    using (HttpContent contenido = response.Content)
+                    {
+                        string respuestaserver = await contenido.ReadAsStringAsync();
+                        JavaScriptSerializer jsserialiser = new JavaScriptSerializer();
+                        dynamic listaproductosdynamica = jsserialiser.DeserializeObject(respuestaserver);
+                        List<Categoria> listaproductos = new List<Categoria>();
+                        listaproductos.Add(new Categoria
+                        {
+                            idCategoria = 0,
+                            nombre = "Selecionar Categoria"
+                        });
+                        foreach (var item in listaproductosdynamica)
+                        {
+                            listaproductos.Add(new Categoria
+                            {
+                                idCategoria = item["idCategoria"],
+                                nombre = item["nombre"]
+                            });
+                        }
+                        cb_IdCategoria.DataSource = listaproductos;
+                        cb_IdCategoria.DisplayMember = "nombre";
+                        cb_IdCategoria.ValueMember = "idCategoria";
+                        cat = (int)cb_IdCategoria.SelectedValue;
+                    }
+                }
             }
         }
     }

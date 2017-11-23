@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.B_Agregar = new System.Windows.Forms.Button();
             this.B_Mostrar = new System.Windows.Forms.Button();
@@ -46,7 +47,9 @@
             this.l_ZonaMensaje = new System.Windows.Forms.Label();
             this.B_Eliminar = new System.Windows.Forms.Button();
             this.B_Editar = new System.Windows.Forms.Button();
+            this.bindingSourceCategoria = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -150,6 +153,7 @@
             // 
             this.cb_IdCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_IdCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_IdCategoria.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_IdCategoria.FormattingEnabled = true;
             this.cb_IdCategoria.Location = new System.Drawing.Point(149, 189);
@@ -285,6 +289,7 @@
             this.Name = "FormProducto";
             this.Text = "Productos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +315,6 @@
         private System.Windows.Forms.Label l_ZonaMensaje;
         private System.Windows.Forms.Button B_Eliminar;
         private System.Windows.Forms.Button B_Editar;
+        private System.Windows.Forms.BindingSource bindingSourceCategoria;
     }
 }

@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Views
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
-            if (tb_Nombre.TextLength == 0 && tb_PrecioUnitario.TextLength == 0 && tb_URLImagen.TextLength == 0)//cbcategoria and descripcion
+            if (tb_Nombre.TextLength == 0)//cbcategoria and descripcion
             {
                 l_ZonaMensaje.Text = "Debe ingresar los datos del Producto a Agregar";
             }
@@ -24,25 +24,11 @@ namespace WindowsFormsApp1.Views
             {
                 l_ZonaMensaje.Text = "Debe ingresar el nombre del Producto a Agregar";
             }
-            else if (tb_PrecioUnitario.TextLength == 0)
-            {
-                l_ZonaMensaje.Text = "Debe ingresar el Precio Unitario del Producto a Agregar";
-            }
-            else if (tb_URLImagen.TextLength == 0)
-            {
-                l_ZonaMensaje.Text = "Debe ingresar la URL de la Imagen del Producto a Agregar";
-            }
-            else if (!int.TryParse(tb_PrecioUnitario.Text, out int precio))
-            {
-                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el Precio Unitario del Producto a Agregar";
-            }
             else
             {
                 string urlParametros = "?";
                 urlParametros += "nombre=" + tb_Nombre.Text;
-                urlParametros += "&descripcion=" + tb_Descripcion.Text; 
-                urlParametros += "&precioUnitario=" + tb_PrecioUnitario.Text;
-                urlParametros += "&url_imagen=" + tb_URLImagen.Text;
+                urlParametros += "&descripcion=" + tb_Descripcion.Text;
                 urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
                 //url lista
                 using (HttpClient cliente = new HttpClient())
@@ -63,8 +49,6 @@ namespace WindowsFormsApp1.Views
                             tb_Id.Text = string.Empty;
                             tb_Nombre.Text = string.Empty;
                             tb_Descripcion.Text = string.Empty;
-                            tb_PrecioUnitario.Text = string.Empty;
-                            tb_URLImagen.Text = string.Empty;
                         }
                     }
                 }//agregar
@@ -98,7 +82,7 @@ namespace WindowsFormsApp1.Views
         }
         private async void B_Editar_Click(object sender, EventArgs e)
         {
-            if (tb_Id.TextLength == 0 && tb_Nombre.TextLength == 0 && tb_PrecioUnitario.TextLength == 0 && tb_URLImagen.TextLength == 0)//cbcategoria and descripcion
+            if (tb_Id.TextLength == 0 && tb_Nombre.TextLength == 0)//cbcategoria and descripcion
             {
                 l_ZonaMensaje.Text = "Debe ingresar los datos del Producto a Agregar";
             }
@@ -114,26 +98,12 @@ namespace WindowsFormsApp1.Views
             {
                 l_ZonaMensaje.Text = "Debe ingresar el nombre del Producto a Agregar";
             }
-            else if (tb_PrecioUnitario.TextLength == 0)
-            {
-                l_ZonaMensaje.Text = "Debe ingresar el Precio Unitario del Producto a Agregar";
-            }
-            else if (tb_URLImagen.TextLength == 0)
-            {
-                l_ZonaMensaje.Text = "Debe ingresar la URL de la Imagen del Producto a Agregar";
-            }
-            else if (!int.TryParse(tb_PrecioUnitario.Text, out int precio))
-            {
-                l_ZonaMensaje.Text = "Debe ingresar un valor Entero para el Precio Unitario del Producto a Agregar";
-            }
             else
             {
                 string urlParametros = "?";
                 urlParametros += "idProducto=" + tb_Id.Text;
                 urlParametros += "&nombre=" + tb_Nombre.Text;
                 urlParametros += "&descripcion=" + tb_Descripcion.Text;
-                urlParametros += "&precioUnitario=" + tb_PrecioUnitario.Text;
-                urlParametros += "&url_imagen=" + tb_URLImagen.Text;
                 urlParametros += "&idCategoria=" + "1";// + cb_IdCategoria.Text; // get all and select id
                 //url lista
                 using (HttpClient cliente = new HttpClient())
@@ -154,8 +124,6 @@ namespace WindowsFormsApp1.Views
                             tb_Id.Text = string.Empty;
                             tb_Nombre.Text = string.Empty;
                             tb_Descripcion.Text = string.Empty;
-                            tb_PrecioUnitario.Text = string.Empty;
-                            tb_URLImagen.Text = string.Empty;
                         }
                     }
                 }//agregar
@@ -220,8 +188,6 @@ namespace WindowsFormsApp1.Views
                             tb_Id.Text = string.Empty;
                             tb_Nombre.Text = string.Empty;
                             tb_Descripcion.Text = string.Empty;
-                            tb_PrecioUnitario.Text = string.Empty;
-                            tb_URLImagen.Text = string.Empty;
                         }
                     }
                 }//agregar
@@ -291,8 +257,6 @@ namespace WindowsFormsApp1.Views
                 tb_Id.Text = row.Cells[0].Value.ToString();
                 tb_Nombre.Text = row.Cells[1].Value.ToString();
                 tb_Descripcion.Text = (string)row.Cells[2].Value;// para nulls
-                tb_PrecioUnitario.Text = row.Cells[3].Value.ToString();
-                tb_URLImagen.Text = row.Cells[4].Value.ToString();
                 //cb_IdCategoria.Text = row.Cells[5].Value.ToString(); ver
             }
         }
