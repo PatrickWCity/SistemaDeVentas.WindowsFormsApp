@@ -14,8 +14,18 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            try { 
             Cliente();
             Vendedor();
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
+            Icon = Properties.Resources.Icon;
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
         }
 
         private async void B_Agregar_Click(object sender, EventArgs e)
@@ -38,6 +48,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&descuento=" + tb_Descuento.Text;
                 urlParametros += "&IVA=" + tb_IVA.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/AddVenta" + urlParametros))
@@ -89,6 +100,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Editar_Click(object sender, EventArgs e)
@@ -120,6 +136,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&descuento=" + tb_Descuento.Text;
                 urlParametros += "&IVA=" + tb_IVA.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/EditVenta" + urlParametros))
@@ -171,6 +188,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Eliminar_Click(object sender, EventArgs e)
@@ -188,6 +210,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "idVenta=" + tb_Id.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/DeleteVenta" + urlParametros))
@@ -239,10 +262,16 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Mostrar_Click(object sender, EventArgs e)
         {
+            try { 
             using (HttpClient cliente = new HttpClient())
             {
                 using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Venta/GetAll"))
@@ -271,6 +300,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
             l_ZonaMensaje.Text = string.Empty;
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -283,6 +317,9 @@ namespace WindowsFormsApp1.Views
                 cb_Vendedor.SelectedValue = row.Cells[3].Value;
                 tb_Descuento.Text = row.Cells[4].Value.ToString();
                 tb_IVA.Text = row.Cells[5].Value.ToString();
+                B_Agregar.Enabled = false;
+                B_Editar.Enabled = true;
+                B_Eliminar.Enabled = true;
             }
         }
         private async void Cliente()
@@ -318,6 +355,20 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+
+        private void B_Restablecer_Click(object sender, EventArgs e)
+        {
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
+            tb_Id.Text = string.Empty;
+            tb_Total.Text = string.Empty;
+            tb_Descuento.Text = string.Empty;
+            tb_IVA.Text = string.Empty;
+            cb_Cliente.SelectedValue = 0;
+            cb_Vendedor.SelectedValue = 0;
+        }
+
         private async void Vendedor()
         {
             using (HttpClient cliente = new HttpClient())

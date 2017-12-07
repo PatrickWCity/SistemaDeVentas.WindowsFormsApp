@@ -13,6 +13,10 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            Icon = Properties.Resources.Icon;
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
@@ -33,6 +37,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&telefono=" + tb_Telefono.Text;
                 urlParametros += "&rut=" + tb_Rut.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/AddVendedor" + urlParametros))
@@ -83,6 +88,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Editar_Click(object sender, EventArgs e)
@@ -113,6 +123,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&telefono=" + tb_Telefono.Text;
                 urlParametros += "&rut=" + tb_Rut.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/EditVendedor" + urlParametros))
@@ -163,6 +174,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Eliminar_Click(object sender, EventArgs e)
@@ -180,6 +196,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "idVendedor=" + tb_Id.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/DeleteVendedor" + urlParametros))
@@ -230,10 +247,16 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Mostrar_Click(object sender, EventArgs e)
         {
+            try { 
             using (HttpClient cliente = new HttpClient())
             {
                 using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Vendedor/GetAll"))
@@ -261,6 +284,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
             l_ZonaMensaje.Text = string.Empty;
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -273,7 +301,24 @@ namespace WindowsFormsApp1.Views
                 tb_ApellidoMaterno.Text = (string)row.Cells[3].Value;// para nulls
                 tb_Telefono.Text = (string)row.Cells[4].Value;// para nulls
                 tb_Rut.Text = (string)row.Cells[5].Value;// para nulls
+
+                B_Agregar.Enabled = false;
+                B_Editar.Enabled = true;
+                B_Eliminar.Enabled = true;
             }
+        }
+
+        private void B_Restablecer_Click(object sender, EventArgs e)
+        {
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
+            tb_Id.Text = string.Empty;
+            tb_Nombre.Text = string.Empty;
+            tb_ApellidoPaterno.Text = string.Empty;
+            tb_ApellidoMaterno.Text = string.Empty;
+            tb_Telefono.Text = string.Empty;
+            tb_Rut.Text = string.Empty;
         }
     }
 }

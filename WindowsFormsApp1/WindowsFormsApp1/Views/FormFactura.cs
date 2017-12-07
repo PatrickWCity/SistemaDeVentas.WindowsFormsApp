@@ -14,7 +14,17 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            try { 
             ModoPago();
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
+            Icon = Properties.Resources.Icon;
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
@@ -35,6 +45,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&numPago=" + cb_ModoPago.SelectedValue;
                 urlParametros += "&descuento=" + tb_Descuento.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Factura/AddFactura" + urlParametros))
@@ -84,6 +95,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Editar_Click(object sender, EventArgs e)
@@ -114,6 +130,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&numPago=" + cb_ModoPago.SelectedValue;
                 urlParametros += "&descuento=" + tb_Descuento.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Factura/EditFactura" + urlParametros))
@@ -163,6 +180,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Eliminar_Click(object sender, EventArgs e)
@@ -180,6 +202,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "numFactura=" + tb_Id.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Factura/DeleteFactura" + urlParametros))
@@ -229,10 +252,16 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Mostrar_Click(object sender, EventArgs e)
         {
+            try { 
             using (HttpClient cliente = new HttpClient())
             {
                 using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Factura/GetAll"))
@@ -260,6 +289,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
             l_ZonaMensaje.Text = string.Empty;
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -271,6 +305,9 @@ namespace WindowsFormsApp1.Views
                 tb_Total.Text = row.Cells[3].Value.ToString();// para nulls
                 cb_ModoPago.SelectedValue = row.Cells[4].Value;
                 tb_Descuento.Text = row.Cells[5].Value.ToString();
+                B_Agregar.Enabled = false;
+                B_Editar.Enabled = true;
+                B_Eliminar.Enabled = true;
             }
         }
         private async void ModoPago()
@@ -305,6 +342,18 @@ namespace WindowsFormsApp1.Views
                     }
                 }
             }
+        }
+
+        private void B_Restablecer_Click(object sender, EventArgs e)
+        {
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
+            tb_Id.Text = string.Empty;
+            tb_IVA.Text = string.Empty;
+            tb_Total.Text = string.Empty;
+            cb_ModoPago.SelectedValue = 0;
+            tb_Descuento.Text = string.Empty;
         }
     }
 }

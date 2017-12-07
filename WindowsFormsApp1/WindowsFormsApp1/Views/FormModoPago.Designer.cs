@@ -40,7 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_Detalles = new System.Windows.Forms.TextBox();
             this.tb_Nombre = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.B_Restablecer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // l_ZonaMensaje
@@ -61,8 +64,9 @@
             this.tb_Id.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Id.Location = new System.Drawing.Point(162, 14);
             this.tb_Id.Name = "tb_Id";
-            this.tb_Id.Size = new System.Drawing.Size(361, 27);
+            this.tb_Id.Size = new System.Drawing.Size(328, 27);
             this.tb_Id.TabIndex = 22;
+            this.tb_Id.Visible = false;
             // 
             // l_NumPago
             // 
@@ -73,6 +77,7 @@
             this.l_NumPago.Size = new System.Drawing.Size(144, 19);
             this.l_NumPago.TabIndex = 21;
             this.l_NumPago.Text = "Numero de Pago";
+            this.l_NumPago.Visible = false;
             // 
             // dataGridView1
             // 
@@ -83,11 +88,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 152);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 187);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(625, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(625, 207);
             this.dataGridView1.TabIndex = 18;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
@@ -97,9 +102,9 @@
             this.B_Editar.AutoSize = true;
             this.B_Editar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Editar.Image = global::WindowsFormsApp1.Properties.Resources.pencil;
-            this.B_Editar.Location = new System.Drawing.Point(529, 47);
+            this.B_Editar.Location = new System.Drawing.Point(496, 47);
             this.B_Editar.Name = "B_Editar";
-            this.B_Editar.Size = new System.Drawing.Size(108, 29);
+            this.B_Editar.Size = new System.Drawing.Size(141, 29);
             this.B_Editar.TabIndex = 25;
             this.B_Editar.Text = "Editar";
             this.B_Editar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -112,9 +117,9 @@
             this.B_Eliminar.AutoSize = true;
             this.B_Eliminar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Eliminar.Image = global::WindowsFormsApp1.Properties.Resources.trash;
-            this.B_Eliminar.Location = new System.Drawing.Point(529, 82);
+            this.B_Eliminar.Location = new System.Drawing.Point(496, 82);
             this.B_Eliminar.Name = "B_Eliminar";
-            this.B_Eliminar.Size = new System.Drawing.Size(108, 29);
+            this.B_Eliminar.Size = new System.Drawing.Size(141, 29);
             this.B_Eliminar.TabIndex = 24;
             this.B_Eliminar.Text = "Eliminar";
             this.B_Eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -127,9 +132,9 @@
             this.B_Mostrar.AutoSize = true;
             this.B_Mostrar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Mostrar.Image = global::WindowsFormsApp1.Properties.Resources.eye;
-            this.B_Mostrar.Location = new System.Drawing.Point(529, 117);
+            this.B_Mostrar.Location = new System.Drawing.Point(496, 152);
             this.B_Mostrar.Name = "B_Mostrar";
-            this.B_Mostrar.Size = new System.Drawing.Size(108, 29);
+            this.B_Mostrar.Size = new System.Drawing.Size(141, 29);
             this.B_Mostrar.TabIndex = 20;
             this.B_Mostrar.Text = "Mostrar";
             this.B_Mostrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -142,9 +147,9 @@
             this.B_Agregar.AutoSize = true;
             this.B_Agregar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Agregar.Image = global::WindowsFormsApp1.Properties.Resources.plus;
-            this.B_Agregar.Location = new System.Drawing.Point(529, 12);
+            this.B_Agregar.Location = new System.Drawing.Point(496, 12);
             this.B_Agregar.Name = "B_Agregar";
-            this.B_Agregar.Size = new System.Drawing.Size(108, 29);
+            this.B_Agregar.Size = new System.Drawing.Size(141, 29);
             this.B_Agregar.TabIndex = 19;
             this.B_Agregar.Text = "Agregar";
             this.B_Agregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -178,7 +183,7 @@
             this.tb_Detalles.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Detalles.Location = new System.Drawing.Point(162, 84);
             this.tb_Detalles.Name = "tb_Detalles";
-            this.tb_Detalles.Size = new System.Drawing.Size(361, 27);
+            this.tb_Detalles.Size = new System.Drawing.Size(328, 27);
             this.tb_Detalles.TabIndex = 27;
             // 
             // tb_Nombre
@@ -188,14 +193,42 @@
             this.tb_Nombre.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Nombre.Location = new System.Drawing.Point(162, 49);
             this.tb_Nombre.Name = "tb_Nombre";
-            this.tb_Nombre.Size = new System.Drawing.Size(361, 27);
+            this.tb_Nombre.Size = new System.Drawing.Size(328, 27);
             this.tb_Nombre.TabIndex = 26;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Logomakr_2VxCJc;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(131, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
+            // 
+            // B_Restablecer
+            // 
+            this.B_Restablecer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.B_Restablecer.AutoSize = true;
+            this.B_Restablecer.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.B_Restablecer.Image = global::WindowsFormsApp1.Properties.Resources.eraser;
+            this.B_Restablecer.Location = new System.Drawing.Point(496, 117);
+            this.B_Restablecer.Name = "B_Restablecer";
+            this.B_Restablecer.Size = new System.Drawing.Size(141, 29);
+            this.B_Restablecer.TabIndex = 38;
+            this.B_Restablecer.Text = "Restablecer";
+            this.B_Restablecer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.B_Restablecer.UseVisualStyleBackColor = true;
+            this.B_Restablecer.Click += new System.EventHandler(this.B_Restablecer_Click);
             // 
             // FormModoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(649, 425);
+            this.Controls.Add(this.B_Restablecer);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.l_Detalles);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_Detalles);
@@ -213,6 +246,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenedor de Modos de Pago";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,5 +266,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_Detalles;
         private System.Windows.Forms.TextBox tb_Nombre;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button B_Restablecer;
     }
 }

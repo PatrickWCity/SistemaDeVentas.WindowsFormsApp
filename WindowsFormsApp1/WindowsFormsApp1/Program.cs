@@ -14,7 +14,11 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            //Application.Run(new FormLogin());
+
+            var main_form = new FormLogin();
+            main_form.Show();
+            Application.Run();
         }
     }
 }

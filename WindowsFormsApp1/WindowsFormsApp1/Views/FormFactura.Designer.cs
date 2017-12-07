@@ -44,7 +44,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tb_Descuento = new System.Windows.Forms.TextBox();
             this.cb_ModoPago = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.B_Restablecer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // B_Editar
@@ -53,9 +56,9 @@
             this.B_Editar.AutoSize = true;
             this.B_Editar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Editar.Image = global::WindowsFormsApp1.Properties.Resources.pencil;
-            this.B_Editar.Location = new System.Drawing.Point(529, 47);
+            this.B_Editar.Location = new System.Drawing.Point(496, 47);
             this.B_Editar.Name = "B_Editar";
-            this.B_Editar.Size = new System.Drawing.Size(108, 29);
+            this.B_Editar.Size = new System.Drawing.Size(141, 29);
             this.B_Editar.TabIndex = 29;
             this.B_Editar.Text = "Editar";
             this.B_Editar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -68,9 +71,9 @@
             this.B_Eliminar.AutoSize = true;
             this.B_Eliminar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Eliminar.Image = global::WindowsFormsApp1.Properties.Resources.trash;
-            this.B_Eliminar.Location = new System.Drawing.Point(529, 82);
+            this.B_Eliminar.Location = new System.Drawing.Point(496, 82);
             this.B_Eliminar.Name = "B_Eliminar";
-            this.B_Eliminar.Size = new System.Drawing.Size(108, 29);
+            this.B_Eliminar.Size = new System.Drawing.Size(141, 29);
             this.B_Eliminar.TabIndex = 28;
             this.B_Eliminar.Text = "Eliminar";
             this.B_Eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -115,7 +118,7 @@
             this.tb_Total.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Total.Location = new System.Drawing.Point(149, 84);
             this.tb_Total.Name = "tb_Total";
-            this.tb_Total.Size = new System.Drawing.Size(374, 27);
+            this.tb_Total.Size = new System.Drawing.Size(341, 27);
             this.tb_Total.TabIndex = 24;
             // 
             // tb_IVA
@@ -125,7 +128,7 @@
             this.tb_IVA.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_IVA.Location = new System.Drawing.Point(149, 49);
             this.tb_IVA.Name = "tb_IVA";
-            this.tb_IVA.Size = new System.Drawing.Size(374, 27);
+            this.tb_IVA.Size = new System.Drawing.Size(341, 27);
             this.tb_IVA.TabIndex = 23;
             // 
             // tb_Id
@@ -135,8 +138,9 @@
             this.tb_Id.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Id.Location = new System.Drawing.Point(149, 14);
             this.tb_Id.Name = "tb_Id";
-            this.tb_Id.Size = new System.Drawing.Size(374, 27);
+            this.tb_Id.Size = new System.Drawing.Size(341, 27);
             this.tb_Id.TabIndex = 22;
+            this.tb_Id.Visible = false;
             // 
             // label1
             // 
@@ -147,6 +151,7 @@
             this.label1.Size = new System.Drawing.Size(28, 19);
             this.label1.TabIndex = 21;
             this.label1.Text = "ID";
+            this.label1.Visible = false;
             // 
             // B_Mostrar
             // 
@@ -154,9 +159,9 @@
             this.B_Mostrar.AutoSize = true;
             this.B_Mostrar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Mostrar.Image = global::WindowsFormsApp1.Properties.Resources.eye;
-            this.B_Mostrar.Location = new System.Drawing.Point(529, 152);
+            this.B_Mostrar.Location = new System.Drawing.Point(496, 152);
             this.B_Mostrar.Name = "B_Mostrar";
-            this.B_Mostrar.Size = new System.Drawing.Size(108, 29);
+            this.B_Mostrar.Size = new System.Drawing.Size(141, 29);
             this.B_Mostrar.TabIndex = 20;
             this.B_Mostrar.Text = "Mostrar";
             this.B_Mostrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -170,9 +175,9 @@
             this.B_Agregar.AutoSize = true;
             this.B_Agregar.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.B_Agregar.Image = global::WindowsFormsApp1.Properties.Resources.plus;
-            this.B_Agregar.Location = new System.Drawing.Point(529, 12);
+            this.B_Agregar.Location = new System.Drawing.Point(496, 12);
             this.B_Agregar.Name = "B_Agregar";
-            this.B_Agregar.Size = new System.Drawing.Size(108, 29);
+            this.B_Agregar.Size = new System.Drawing.Size(141, 29);
             this.B_Agregar.TabIndex = 19;
             this.B_Agregar.Text = "Agregar";
             this.B_Agregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -223,7 +228,7 @@
             this.tb_Descuento.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Descuento.Location = new System.Drawing.Point(149, 154);
             this.tb_Descuento.Name = "tb_Descuento";
-            this.tb_Descuento.Size = new System.Drawing.Size(374, 27);
+            this.tb_Descuento.Size = new System.Drawing.Size(341, 27);
             this.tb_Descuento.TabIndex = 31;
             // 
             // cb_ModoPago
@@ -233,14 +238,42 @@
             this.cb_ModoPago.FormattingEnabled = true;
             this.cb_ModoPago.Location = new System.Drawing.Point(149, 119);
             this.cb_ModoPago.Name = "cb_ModoPago";
-            this.cb_ModoPago.Size = new System.Drawing.Size(374, 27);
+            this.cb_ModoPago.Size = new System.Drawing.Size(341, 27);
             this.cb_ModoPago.TabIndex = 34;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Logomakr_2VxCJc;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(131, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
+            // 
+            // B_Restablecer
+            // 
+            this.B_Restablecer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.B_Restablecer.AutoSize = true;
+            this.B_Restablecer.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.B_Restablecer.Image = global::WindowsFormsApp1.Properties.Resources.eraser;
+            this.B_Restablecer.Location = new System.Drawing.Point(496, 117);
+            this.B_Restablecer.Name = "B_Restablecer";
+            this.B_Restablecer.Size = new System.Drawing.Size(141, 29);
+            this.B_Restablecer.TabIndex = 38;
+            this.B_Restablecer.Text = "Restablecer";
+            this.B_Restablecer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.B_Restablecer.UseVisualStyleBackColor = true;
+            this.B_Restablecer.Click += new System.EventHandler(this.B_Restablecer_Click);
             // 
             // FormFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(649, 425);
+            this.Controls.Add(this.B_Restablecer);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cb_ModoPago);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
@@ -262,6 +295,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenedor de Facturas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +319,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tb_Descuento;
         private System.Windows.Forms.ComboBox cb_ModoPago;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button B_Restablecer;
     }
 }

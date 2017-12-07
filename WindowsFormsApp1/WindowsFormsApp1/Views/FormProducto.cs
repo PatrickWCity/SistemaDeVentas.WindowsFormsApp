@@ -14,7 +14,17 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            try { 
             Categoria();
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
+            Icon = Properties.Resources.Icon;
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
@@ -47,6 +57,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&url_imagen=" + tb_URLImagen.Text;
                 urlParametros += "&idCategoria=" + cb_IdCategoria.SelectedValue;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/AddProducto" + urlParametros))
@@ -97,6 +108,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Editar_Click(object sender, EventArgs e)
@@ -139,6 +155,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&url_imagen=" + tb_URLImagen.Text;
                 urlParametros += "&idCategoria=" + cb_IdCategoria.SelectedValue;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/EditProducto" + urlParametros))
@@ -189,6 +206,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Eliminar_Click(object sender, EventArgs e)
@@ -206,6 +228,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "idProducto=" + tb_Id.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/DeleteProducto" + urlParametros))
@@ -256,10 +279,16 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Mostrar_Click(object sender, EventArgs e)
         {
+            try { 
             using (HttpClient cliente = new HttpClient())
             {
                 using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/Producto/GetAll"))
@@ -287,6 +316,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
             l_ZonaMensaje.Text = string.Empty;
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -299,6 +333,10 @@ namespace WindowsFormsApp1.Views
                 tb_PrecioUnitario.Text = row.Cells[3].Value.ToString();
                 tb_URLImagen.Text = row.Cells[4].Value.ToString();
                 //cb_IdCategoria.Text = row.Cells[5].Value.ToString(); ver
+
+                B_Agregar.Enabled = false;
+                B_Editar.Enabled = true;
+                B_Eliminar.Enabled = true;
             }
         }
         private async void Categoria()
@@ -333,6 +371,19 @@ namespace WindowsFormsApp1.Views
                     }
                 }
             }
+        }
+
+        private void B_Restablecer_Click(object sender, EventArgs e)
+        {
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
+            tb_Id.Text = string.Empty;
+            tb_Nombre.Text = string.Empty;
+            tb_Descripcion.Text = string.Empty;
+            tb_PrecioUnitario.Text = string.Empty;
+            tb_URLImagen.Text = string.Empty;
+            cb_IdCategoria.SelectedValue = 0;
         }
     }
 }

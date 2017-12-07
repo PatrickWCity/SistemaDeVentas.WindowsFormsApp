@@ -13,6 +13,10 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            Icon = Properties.Resources.Icon;
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
@@ -29,6 +33,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "nombre=" + tb_Nombre.Text;
                 urlParametros += "&otroDetalles=" + tb_Detalles.Text; //temp cambiar ?
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/ModoPago/AddModoPago" + urlParametros))
@@ -73,6 +78,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Editar_Click(object sender, EventArgs e)
@@ -100,6 +110,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&nombre=" + tb_Nombre.Text;
                 urlParametros += "&otroDetalles=" + tb_Detalles.Text;//detalles
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/ModoPago/EditModoPago" + urlParametros))
@@ -144,6 +155,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Eliminar_Click(object sender, EventArgs e)
@@ -161,6 +177,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "numPago=" + tb_Id.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/ModoPago/DeleteModoPago" + urlParametros))
@@ -205,10 +222,16 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Mostrar_Click(object sender, EventArgs e)
         {
+            try { 
             using (HttpClient cliente = new HttpClient())
             {
                 using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/ModoPago/GetAll"))
@@ -233,6 +256,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
             l_ZonaMensaje.Text = string.Empty;
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -242,7 +270,20 @@ namespace WindowsFormsApp1.Views
                 tb_Id.Text = row.Cells[0].Value.ToString();
                 tb_Nombre.Text = row.Cells[1].Value.ToString();
                 tb_Detalles.Text = (string)row.Cells[2].Value;// para nulls
+                B_Agregar.Enabled = false;
+                B_Editar.Enabled = true;
+                B_Eliminar.Enabled = true;
             }
+        }
+
+        private void B_Restablecer_Click(object sender, EventArgs e)
+        {
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
+            tb_Id.Text = string.Empty;
+            tb_Nombre.Text = string.Empty;
+            tb_Detalles.Text = string.Empty;
         }
     }
 }

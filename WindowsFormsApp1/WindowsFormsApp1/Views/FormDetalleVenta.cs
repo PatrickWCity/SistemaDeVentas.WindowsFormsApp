@@ -14,9 +14,19 @@ namespace WindowsFormsApp1.Views
         {
             InitializeComponent();
             l_ZonaMensaje.Text = string.Empty;
+            try { 
             Factura();
             Venta();
             Producto();
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
+            Icon = Properties.Resources.Icon;
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
         }
         private async void B_Agregar_Click(object sender, EventArgs e)
         {
@@ -33,6 +43,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&idProducto=" + cb_Producto.SelectedValue;
                 urlParametros += "&cantidad=" + tb_Cantidad.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/DetalleVenta/AddDetalleVenta" + urlParametros))
@@ -83,6 +94,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Editar_Click(object sender, EventArgs e)
@@ -105,6 +121,7 @@ namespace WindowsFormsApp1.Views
                 urlParametros += "&idProducto=" + cb_Producto.SelectedValue;
                 urlParametros += "&cantidad=" + tb_Cantidad.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/DetalleVenta/EditDetalleVenta" + urlParametros))
@@ -155,6 +172,11 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Eliminar_Click(object sender, EventArgs e)
@@ -172,6 +194,7 @@ namespace WindowsFormsApp1.Views
                 string urlParametros = "?";
                 urlParametros += "idDetalle=" + tb_Id.Text;
                 //url lista
+                try { 
                 using (HttpClient cliente = new HttpClient())
                 {
                     using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/DetalleVenta/DeleteDetalleVenta" + urlParametros))
@@ -222,10 +245,16 @@ namespace WindowsFormsApp1.Views
                         }
                     }
                 }//get all
+                }
+                catch
+                {
+                    l_ZonaMensaje.Text = "Error de Conexión!";
+                }
             }
         }
         private async void B_Mostrar_Click(object sender, EventArgs e)
         {
+            try { 
             using (HttpClient cliente = new HttpClient())
             {
                 using (HttpResponseMessage response = await cliente.GetAsync("http://localhost:58327/DetalleVenta/GetAll"))
@@ -253,6 +282,11 @@ namespace WindowsFormsApp1.Views
                 }
             }
             l_ZonaMensaje.Text = string.Empty;
+            }
+            catch
+            {
+                l_ZonaMensaje.Text = "Error de Conexión!";
+            }
         }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -265,6 +299,9 @@ namespace WindowsFormsApp1.Views
                 tb_SubTotal.Text = row.Cells[3].Value.ToString();
                 cb_Producto.SelectedValue = row.Cells[4].Value;
                 tb_Cantidad.Text = row.Cells[5].Value.ToString();// para nulls
+                B_Agregar.Enabled = false;
+                B_Editar.Enabled = true;
+                B_Eliminar.Enabled = true;
             }
         }
         private async void Factura()
@@ -300,6 +337,17 @@ namespace WindowsFormsApp1.Views
                 }
             }
         }
+
+        private void B_Restablecer_Click(object sender, EventArgs e)
+        {
+            B_Agregar.Enabled = true;
+            B_Editar.Enabled = false;
+            B_Eliminar.Enabled = false;
+            tb_Id.Text = string.Empty;
+            tb_Cantidad.Text = string.Empty;
+            tb_SubTotal.Text = string.Empty;
+        }
+
         private async void Venta()
         {
             using (HttpClient cliente = new HttpClient())

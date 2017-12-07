@@ -8,6 +8,7 @@ namespace WindowsFormsApp1.Views
         public FormMenu()
         {
             InitializeComponent();
+            Icon = Properties.Resources.Icon;
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
