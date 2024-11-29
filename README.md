@@ -1,1 +1,3 @@
-Sistema de Ventas Application
+SistemaDeVentas.WindowsFormsApp
+
+Hecho con Visual Studio 2017 Community Edition
